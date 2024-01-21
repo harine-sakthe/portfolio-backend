@@ -1,33 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Portfolio.Controllers;
 using Portfolio.Models;
-using Portfolio.Services;
+using Portfolio;
 
-namespace Portfolio.Controllers
+public class InternshipController : BaseController<Internships>
 {
-	[Route("api/Internship")]
-	[ApiController]
-	public class InternshipController : ControllerBase
+	public InternshipController(IServices services) : base(services)
 	{
-		private readonly IServices _services;
-
-		public InternshipController(IServices services)
-		{
-			_services = services;
-		}
-		[HttpGet("getInternshipDetails")]
-		public async Task<IActionResult> GetInternshipDetails()
-		{
-			try
-			{
-				var educationDetails = await _services.GetEducationDetailsAsync();
-				return Ok(educationDetails);
-			}
-			catch (Exception ex)
-			{
-				return StatusCode(500, $"An error occurred while fetching education details: {ex.Message}");
-			}
-		}
-
 	}
+
 }

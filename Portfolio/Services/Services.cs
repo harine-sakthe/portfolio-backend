@@ -29,66 +29,17 @@ namespace Portfolio.Services
 				throw new Exception("Error saving contact form to the database", ex);
 			}
 		}
+		public async Task<IEnumerable<T>> GetDetailsAsync<T>() where T : class
+		{
+			return await _context.Set<T>().ToListAsync();
+		}
 
-		public async Task<IActionResult> GetEducationDetailsAsync()
+		public async Task CreateAsync<T>(T entity) where T : class
 		{
-			try
-			{
-				var educationDetails = await _context.educations.ToListAsync();
-				return new OkObjectResult(educationDetails);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Error getting education details: {ex.Message}");
-			}
+			_context.Set<T>().Add(entity);
+			await _context.SaveChangesAsync();
 		}
-		public async Task<IActionResult> GetCertificationDetailsAsync()
-		{
-			try
-			{
-				var certificationDetails = await _context.educations.ToListAsync();
-				return new OkObjectResult(certificationDetails);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Error getting education details: {ex.Message}");
-			}
-		}
-		public async Task<IActionResult> GetInternshipDetailsAsync()
-		{
-			try
-			{
-				var internshipDetails = await _context.internships.ToListAsync();
-				return new OkObjectResult(internshipDetails);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Error getting internship details: {ex.Message}");
-			}
-		}
-		public async Task<IActionResult> GetLanguageDetailsAsync()
-		{
-			try
-			{
-				var languageDetails = await _context.languages.ToListAsync();
-				return new OkObjectResult(languageDetails);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Error getting language details: {ex.Message}");
-			}
-		}
-		public async Task<IActionResult> GetProjectDetailsAsync()
-		{
-			try
-			{
-				var projectDetails = await _context.Projects.ToListAsync();
-				return new OkObjectResult(projectDetails);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Error getting project details: {ex.Message}");
-			}
-		}
+
+		
 	}
 }

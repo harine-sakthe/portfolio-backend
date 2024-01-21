@@ -1,35 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Portfolio.Controllers;
 using Portfolio.Models;
-using Portfolio.Services;
+using Portfolio;
 
-namespace Portfolio.Controllers
+public class ProjectController : BaseController<Projects>
 {
-	[ApiController]
-	[Route("api/project")]
-	public class ProjectController : ControllerBase
+	public ProjectController(IServices services) : base(services)
 	{
-		private readonly IServices _services;
-
-		public ProjectController(IServices services)
-		{
-			_services = services;
-		}
-
-		[HttpGet("getEducationDetails")]
-		public async Task<IActionResult> GetProjectDetails()
-		{
-			try
-			{
-				var projectDetails = await _services.GetProjectDetailsAsync();
-				return Ok(projectDetails);
-			}
-			catch (Exception ex)
-			{
-				return StatusCode(500, $"An error occurred while fetching education details: {ex.Message}");
-			}
-		}
-
 	}
 
 }
-

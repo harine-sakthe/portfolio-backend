@@ -11,8 +11,8 @@ using Portfolio.Data;
 namespace Portfolio.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240118111718_ModelsAdded")]
-    partial class ModelsAdded
+    [Migration("20240118172531_InternshipColumnChanged")]
+    partial class InternshipColumnChanged
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,7 +101,7 @@ namespace Portfolio.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("description")
+                    b.Property<string>("companyname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -110,6 +110,10 @@ namespace Portfolio.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("timePeriod")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

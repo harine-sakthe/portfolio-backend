@@ -5,7 +5,7 @@
 namespace Portfolio.Migrations
 {
     /// <inheritdoc />
-    public partial class ModelsAdded : Migration
+    public partial class FirstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,6 +21,21 @@ namespace Portfolio.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_certifications", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "contactForms",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    emailId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    message = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_contactForms", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,7 +62,7 @@ namespace Portfolio.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     role = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    timePeriod = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     duration = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -89,6 +104,9 @@ namespace Portfolio.Migrations
         {
             migrationBuilder.DropTable(
                 name: "certifications");
+
+            migrationBuilder.DropTable(
+                name: "contactForms");
 
             migrationBuilder.DropTable(
                 name: "educations");

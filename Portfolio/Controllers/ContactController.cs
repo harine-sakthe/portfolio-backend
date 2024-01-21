@@ -12,7 +12,7 @@ namespace Portfolio.Controllers
 
 		public ContactController(IServices services)
 		{
-			_services = services ;
+			_services = services;
 		}
 
 		[HttpPost("submitDetails")]
@@ -28,7 +28,7 @@ namespace Portfolio.Controllers
 				return StatusCode(500, $"An error occurred while processing the form: {ex.Message}");
 			}
 		}
-		
+
 
 	}
 

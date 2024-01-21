@@ -1,4 +1,5 @@
-﻿using Microsoft.Identity.Client;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.Identity.Client;
 
 namespace Portfolio.Models
 {
@@ -7,7 +8,8 @@ namespace Portfolio.Models
 		public int id { get; set; }
 		public string title { get; set; }
 		public string role { get; set; }
-		public string description { get; set; }
-		public string duration {  get; set; }
+		public string timePeriod { get; set; }
+		public string duration {  get; set; } 
+		public string companyname { get; set; }
 	}
 }

@@ -7,10 +7,9 @@ namespace Portfolio
 	public interface IServices
 	{
 		Task CreateContactFormAsync(ContactForm form);
-		Task<IActionResult> GetEducationDetailsAsync();
-		Task<IActionResult> GetCertificationDetailsAsync();
-		Task<IActionResult> GetInternshipDetailsAsync();
-		Task<IActionResult> GetLanguageDetailsAsync();
-		Task<IActionResult> GetProjectDetailsAsync();
+		Task CreateAsync<T>(T details) where T : class;
+		Task<IEnumerable<T>> GetDetailsAsync<T>() where T : class;
+
+
 	}
 }
